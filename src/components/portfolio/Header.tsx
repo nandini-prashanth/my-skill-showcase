@@ -16,14 +16,7 @@ export function Header() {
       className="fixed top-0 left-0 right-0 z-50 glass"
     >
       <div className="container mx-auto px-6 py-4">
-        <nav className="flex items-center justify-between">
-          <motion.a
-            href="#"
-            className="text-2xl font-display font-bold text-gradient"
-            whileHover={{ scale: 1.05 }}
-          >
-            Portfolio
-          </motion.a>
+        <nav className="flex items-center justify-end">
           
           <ul className="hidden md:flex items-center gap-8">
             {navItems.map((item, index) => (
