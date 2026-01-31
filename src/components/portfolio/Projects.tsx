@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { ExternalLink, Github } from "lucide-react";
+
 
 const projects = [
   {
@@ -102,26 +102,6 @@ export function Projects() {
                   ))}
                 </div>
 
-                <div className="flex gap-4">
-                  <motion.a
-                    href={project.liveUrl}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-medium transition-all hover:glow"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    Live Demo
-                  </motion.a>
-                  <motion.a
-                    href={project.githubUrl}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 px-4 py-2 rounded-lg border border-border text-sm font-medium hover:border-primary/50 transition-all"
-                  >
-                    <Github className="w-4 h-4" />
-                    Code
-                  </motion.a>
-                </div>
               </div>
             </motion.article>
           ))}
