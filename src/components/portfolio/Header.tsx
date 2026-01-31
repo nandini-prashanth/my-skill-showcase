@@ -36,14 +36,6 @@ export function Header() {
             ))}
           </ul>
 
-          <motion.a
-            href="#contact"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="hidden md:inline-flex px-5 py-2.5 rounded-lg bg-primary text-primary-foreground font-medium text-sm transition-all duration-300 hover:glow"
-          >
-            Get in Touch
-          </motion.a>
         </nav>
       </div>
     </motion.header>
