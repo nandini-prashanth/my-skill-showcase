@@ -1,13 +1,41 @@
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const navItems = [
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
+  { name: "About", href: "#about", id: "about" },
+  { name: "Skills", href: "#skills", id: "skills" },
+  { name: "Projects", href: "#projects", id: "projects" },
+  { name: "Contact", href: "#contact", id: "contact" },
 ];
 
 export function Header() {
+  const [activeSection, setActiveSection] = useState<string>("");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navItems.map((item) => ({
+        id: item.id,
+        element: document.getElementById(item.id),
+      }));
+
+      const scrollPosition = window.scrollY + 150;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        if (section.element && section.element.offsetTop <= scrollPosition) {
+          setActiveSection(section.id);
+          return;
+        }
+      }
+      setActiveSection("");
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <motion.header
       initial={{ y: -100, opacity: 0 }}
@@ -28,7 +56,11 @@ export function Header() {
               >
                 <a
                   href={item.href}
-                  className="text-muted-foreground hover:text-primary transition-colors duration-300 font-medium"
+                  className={`transition-colors duration-300 font-medium ${
+                    activeSection === item.id
+                      ? "text-primary"
+                      : "text-muted-foreground hover:text-primary"
+                  }`}
                 >
                   {item.name}
                 </a>
