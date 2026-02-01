@@ -74,9 +74,9 @@ export function Hero() {
             className="flex items-center justify-center gap-6"
           >
             {[
-              { icon: Github, href: "https://github.com", label: "GitHub" },
-              { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-              { icon: Mail, href: "mailto:hello@example.com", label: "Email" },
+              { icon: Github, href: "https://github.com/nandini-prashanth", label: "GitHub" },
+              { icon: Linkedin, href: "https://www.linkedin.com/in/nandini-gowda-9193b741/", label: "LinkedIn" },
+              { icon: Mail, href: "mailto:nandini.hv8@gmail.com", label: "Email" },
             ].map((social) => (
               <motion.a
                 key={social.label}
