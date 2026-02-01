@@ -17,7 +17,7 @@ export function Footer() {
             whileInView={{ opacity: 1 }}
             className="text-muted-foreground text-sm flex items-center gap-1"
           >
-            Made with <Heart className="w-4 h-4 text-primary fill-primary" /> by Your Name
+            Made with <Heart className="w-4 h-4 text-primary fill-primary" /> by Nandini
           </motion.p>
 
           <div className="flex items-center gap-4">
