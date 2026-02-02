@@ -35,7 +35,7 @@ const projects = [
     title: "Bimplan",
     description:
       "Bimplan is a growing Belgian company leading and specialised in the implementation of 3D building information models. 3D modelling, Revit consultancy, BIM coordination and BIM management are the key services of Bimplan.",
-    tags: ["React", "3D Modeling", "BIM"],
+    tags: ["Drupal", "PHP", "MySQL", "Bootstrap", "Ajax", "CSS 3", "HTML 5", "jQuery", "JavaScript"],
     image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop",
     liveUrl: "#",
     githubUrl: "#",
