@@ -14,11 +14,11 @@ const projects = [
     githubUrl: "#",
   },
   {
-    title: "Task Management App",
+    title: "Peter de roover",
     description:
-      "A collaborative project management tool with real-time updates and team features.",
-    tags: ["Next.js", "TypeScript", "Supabase"],
-    image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop",
+      "Peter De Roover is a Belgian politician, economist, journalist and former broadcaster and a member of the Flemish nationalist New Flemish Alliance party. De Roover was elected as a member of the Belgian Chamber of Representatives in 2014 for the Antwerp constituency.",
+    tags: ["Drupal", "PHP", "MySQL", "jQuery", "Ajax", "HTML5", "JavaScript", "CSS3"],
+    image: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=600&h=400&fit=crop",
     liveUrl: "#",
     githubUrl: "#",
   },
