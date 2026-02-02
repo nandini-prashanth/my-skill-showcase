@@ -5,11 +5,11 @@ import { useRef } from "react";
 
 const projects = [
   {
-    title: "E-Commerce Platform",
+    title: "Pelgrom",
     description:
-      "A full-featured online store with cart functionality, payment integration, and admin dashboard.",
-    tags: ["React", "Node.js", "PostgreSQL", "Stripe"],
-    image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=600&h=400&fit=crop",
+      "Pelgrom is a well known restaurant and pub located in a unique location in Antwerp going back to 1425. With a focus on delighted meals combined with Belgian beer, the Pelgrom is the place to be for everyone who wants to experience the Belgian food and drink culture.",
+    tags: ["Drupal", "PHP", "MySQL", "jQuery", "Ajax", "HTML5", "JavaScript", "CSS3"],
+    image: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=600&h=400&fit=crop",
     liveUrl: "#",
     githubUrl: "#",
   },
