@@ -61,7 +61,7 @@ export function Hero() {
               href="#contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 rounded-lg glass glass-hover font-semibold"
+              className="px-8 py-3 rounded-lg bg-primary text-primary-foreground font-semibold transition-all duration-300 hover:glow"
             >
               Contact Me
             </motion.a>
