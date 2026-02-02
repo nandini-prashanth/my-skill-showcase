@@ -23,11 +23,11 @@ const projects = [
     githubUrl: "#",
   },
   {
-    title: "AI Content Generator",
+    title: "Labelinfo",
     description:
-      "An AI-powered application that generates marketing copy and content using GPT models.",
-    tags: ["Python", "OpenAI", "React", "FastAPI"],
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop",
+      "Labelinfo is a website providing useful information about all kind of sustainability labels and sustainable products.",
+    tags: ["Drupal", "PHP", "MySQL", "jQuery", "Ajax", "HTML5", "JavaScript", "CSS3"],
+    image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&h=400&fit=crop",
     liveUrl: "#",
     githubUrl: "#",
   },
