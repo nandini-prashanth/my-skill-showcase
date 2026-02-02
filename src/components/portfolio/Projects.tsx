@@ -32,11 +32,11 @@ const projects = [
     githubUrl: "#",
   },
   {
-    title: "Analytics Dashboard",
+    title: "Bimplan",
     description:
-      "A real-time analytics dashboard with interactive charts and data visualization.",
-    tags: ["React", "D3.js", "Node.js", "MongoDB"],
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+      "Bimplan is a growing Belgian company leading and specialised in the implementation of 3D building information models. 3D modelling, Revit consultancy, BIM coordination and BIM management are the key services of Bimplan.",
+    tags: ["React", "3D Modeling", "BIM"],
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop",
     liveUrl: "#",
     githubUrl: "#",
   },
