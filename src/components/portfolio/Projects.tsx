@@ -40,6 +40,15 @@ const projects = [
     liveUrl: "#",
     githubUrl: "#",
   },
+  {
+    title: "Iedereen Wetenschapper",
+    description:
+      "Iedereen Wetenschapper is the citizen science platform of EOS, the leading science magazine in the Benelux. Citizens interested in participating in citizen science research projects can find information about many citizen science projects and can directly subscribe to participate in a citizen science project.",
+    tags: ["Drupal", "PHP", "jQuery", "HTML5", "CSS3", "Ajax", "JavaScript", "MySQL"],
+    image: "https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=600&h=400&fit=crop",
+    liveUrl: "#",
+    githubUrl: "#",
+  },
 ];
 
 export function Projects() {
