@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
-import { Award, Calendar } from "lucide-react";
+import { Award, Calendar, ExternalLink } from "lucide-react";
 
 const certificates = [
   {
     title: "AI Tools & ChatGPT Workshop",
     issuer: "be10x",
     date: "January 25, 2026",
+    pdf: "/certificates/cert1.pdf",
     skills: [
       "Create presentations using AI in under 5 min",
       "Analyse data using AI in under 30 min",
@@ -16,6 +17,7 @@ const certificates = [
     title: "Python Using AI Workshop",
     issuer: "AI For Techies",
     date: "February 8, 2026",
+    pdf: "/certificates/cert2.pdf",
     skills: [
       "Create interactive visualizations in Python in minutes",
       "Debug Python code in seconds using AI",
@@ -26,6 +28,7 @@ const certificates = [
     title: "AI Fundamentals & Ecosystem Mastery",
     issuer: "AI Career Accelerator Program",
     date: "February 28, 2026",
+    pdf: "/certificates/cert3.pdf",
     skills: [
       "The AI Generalist Mindset",
       "Generative AI Ecosystem Deep Dive",
@@ -55,21 +58,27 @@ export function Certificates() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {certificates.map((cert, index) => (
-            <motion.div
+            <motion.a
               key={cert.title}
+              href={cert.pdf}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="glass glass-hover rounded-xl p-6 flex flex-col"
+              className="glass glass-hover rounded-xl p-6 flex flex-col cursor-pointer group"
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 rounded-lg bg-primary/10">
-                  <Award className="w-5 h-5 text-primary" />
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-primary/10">
+                    <Award className="w-5 h-5 text-primary" />
+                  </div>
+                  <h3 className="font-display font-semibold text-foreground text-lg leading-tight">
+                    {cert.title}
+                  </h3>
                 </div>
-                <h3 className="font-display font-semibold text-foreground text-lg leading-tight">
-                  {cert.title}
-                </h3>
+                <ExternalLink className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
 
               <p className="text-sm text-primary font-medium mb-1">{cert.issuer}</p>
@@ -87,7 +96,7 @@ export function Certificates() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>
