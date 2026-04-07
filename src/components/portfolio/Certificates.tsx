@@ -1,5 +1,12 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Award, Calendar, ExternalLink } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const certificates = [
   {
@@ -38,6 +45,8 @@ const certificates = [
 ];
 
 export function Certificates() {
+  const [selectedCert, setSelectedCert] = useState<typeof certificates[0] | null>(null);
+
   return (
     <section id="certificates" className="py-20 relative">
       <div className="container mx-auto px-6">
@@ -58,11 +67,9 @@ export function Certificates() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {certificates.map((cert, index) => (
-            <motion.a
+            <motion.div
               key={cert.title}
-              href={cert.pdf}
-              target="_blank"
-              rel="noopener noreferrer"
+              onClick={() => setSelectedCert(cert)}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -96,10 +103,25 @@ export function Certificates() {
                   </li>
                 ))}
               </ul>
-            </motion.a>
+            </motion.div>
           ))}
         </div>
       </div>
+
+      <Dialog open={!!selectedCert} onOpenChange={() => setSelectedCert(null)}>
+        <DialogContent className="max-w-4xl h-[85vh] p-0 gap-0">
+          <DialogHeader className="p-4 pb-2">
+            <DialogTitle>{selectedCert?.title}</DialogTitle>
+          </DialogHeader>
+          {selectedCert && (
+            <iframe
+              src={selectedCert.pdf}
+              className="w-full flex-1 border-0 rounded-b-lg"
+              title={selectedCert.title}
+            />
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }
