@@ -13,7 +13,7 @@ const certificates = [
     title: "AI Tools & ChatGPT Workshop",
     issuer: "be10x",
     date: "January 25, 2026",
-    pdf: "/certificates/cert1.pdf",
+    image: "/certificates/cert1-1.jpg",
     skills: [
       "Create presentations using AI in under 5 min",
       "Analyse data using AI in under 30 min",
@@ -24,7 +24,7 @@ const certificates = [
     title: "Python Using AI Workshop",
     issuer: "AI For Techies",
     date: "February 8, 2026",
-    pdf: "/certificates/cert2.pdf",
+    image: "/certificates/cert2-1.jpg",
     skills: [
       "Create interactive visualizations in Python in minutes",
       "Debug Python code in seconds using AI",
@@ -35,7 +35,7 @@ const certificates = [
     title: "AI Fundamentals & Ecosystem Mastery",
     issuer: "AI Career Accelerator Program",
     date: "February 28, 2026",
-    pdf: "/certificates/cert3.pdf",
+    image: "/certificates/cert3-1.jpg",
     skills: [
       "The AI Generalist Mindset",
       "Generative AI Ecosystem Deep Dive",
@@ -109,16 +109,18 @@ export function Certificates() {
       </div>
 
       <Dialog open={!!selectedCert} onOpenChange={() => setSelectedCert(null)}>
-        <DialogContent className="max-w-4xl h-[85vh] p-0 gap-0">
+        <DialogContent className="max-w-4xl p-0 gap-0">
           <DialogHeader className="p-4 pb-2">
             <DialogTitle>{selectedCert?.title}</DialogTitle>
           </DialogHeader>
           {selectedCert && (
-            <iframe
-              src={selectedCert.pdf}
-              className="w-full flex-1 border-0 rounded-b-lg"
-              title={selectedCert.title}
-            />
+            <div className="p-4 pt-0">
+              <img
+                src={selectedCert.image}
+                alt={selectedCert.title}
+                className="w-full h-auto rounded-lg"
+              />
+            </div>
           )}
         </DialogContent>
       </Dialog>
