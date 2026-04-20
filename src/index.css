@@ -80,8 +80,44 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply text-foreground antialiased;
     font-family: var(--font-body);
+    background-color: hsl(var(--background));
+    background-image:
+      radial-gradient(ellipse 80% 60% at 15% 0%, hsl(190 95% 50% / 0.14), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 85% 10%, hsl(260 80% 60% / 0.16), transparent 60%),
+      radial-gradient(ellipse 90% 60% at 50% 100%, hsl(220 60% 30% / 0.20), transparent 70%),
+      linear-gradient(180deg, hsl(220 28% 5%) 0%, hsl(222 30% 7%) 50%, hsl(220 28% 5%) 100%);
+    background-attachment: fixed;
+    position: relative;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+      linear-gradient(hsl(190 95% 50% / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(190 95% 50% / 0.05) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black, transparent 80%);
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(ellipse at center, transparent 50%, hsl(220 35% 3% / 0.65) 100%);
+  }
+
+  #root {
+    position: relative;
+    z-index: 1;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -104,10 +140,14 @@
   }
 
   .glass {
-    @apply bg-card/50 backdrop-blur-xl border border-border/50;
+    @apply bg-card/40 backdrop-blur-xl border border-border/50;
   }
 
   .glass-hover {
-    @apply transition-all duration-300 hover:bg-card/70 hover:border-primary/30 hover:glow;
+    @apply transition-all duration-300 hover:bg-card/60 hover:border-primary/30 hover:glow;
+  }
+
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 }

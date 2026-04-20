@@ -5,16 +5,20 @@ import heroBg from "@/assets/hero-bg.jpg";
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background image */}
+      {/* Background image with refined overlays */}
       <div className="absolute inset-0">
-        <img src={heroBg} alt="" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-background/60" />
+        <img src={heroBg} alt="" className="w-full h-full object-cover opacity-40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-[hsl(260_80%_60%/0.12)]" />
       </div>
-      {/* Background gradient orbs */}
+      {/* Ambient gradient orbs */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-float" style={{ animationDelay: "-3s" }} />
+        <div className="absolute top-1/4 -left-1/4 w-[32rem] h-[32rem] bg-primary/25 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-1/4 -right-1/4 w-[32rem] h-[32rem] bg-[hsl(260_80%_60%/0.25)] rounded-full blur-3xl animate-float" style={{ animationDelay: "-3s" }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] bg-accent/5 rounded-full blur-3xl" />
       </div>
+      {/* Subtle noise texture */}
+      <div className="absolute inset-0 bg-noise opacity-[0.04] mix-blend-overlay pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
