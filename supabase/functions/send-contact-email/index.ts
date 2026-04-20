@@ -1,5 +1,9 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "https://esm.sh/resend@2.0.0";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
+
+const RATE_LIMIT_MAX = 5;
+const RATE_LIMIT_WINDOW_MINUTES = 60;
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -26,6 +30,49 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     const resend = new Resend(RESEND_API_KEY);
+
+    // Identify caller IP (best-effort)
+    const forwardedFor = req.headers.get("x-forwarded-for") ?? "";
+    const ipAddress =
+      forwardedFor.split(",")[0].trim() ||
+      req.headers.get("x-real-ip") ||
+      "unknown";
+
+    // Rate limit check via Supabase service role
+    const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
+    const SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+    if (!SUPABASE_URL || !SERVICE_ROLE_KEY) {
+      throw new Error("Supabase service credentials not configured");
+    }
+    const supabase = createClient(SUPABASE_URL, SERVICE_ROLE_KEY);
+
+    const windowStart = new Date(
+      Date.now() - RATE_LIMIT_WINDOW_MINUTES * 60 * 1000
+    ).toISOString();
+
+    const { count, error: countError } = await supabase
+      .from("contact_attempts")
+      .select("*", { count: "exact", head: true })
+      .eq("ip_address", ipAddress)
+      .gte("attempted_at", windowStart);
+
+    if (countError) {
+      console.error("Rate limit lookup failed:", countError);
+      throw new Error("Rate limit check failed");
+    }
+
+    if ((count ?? 0) >= RATE_LIMIT_MAX) {
+      return new Response(
+        JSON.stringify({
+          error: "Too many requests. Please try again later.",
+        }),
+        {
+          status: 429,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
+    }
+
     const { name, email, message }: ContactRequest = await req.json();
 
     // Validate required fields
@@ -88,6 +135,14 @@ const handler = async (req: Request): Promise<Response> => {
     });
 
     console.log("Contact email sent successfully:", emailResponse);
+
+    // Record the attempt for rate limiting (best-effort)
+    const { error: insertError } = await supabase
+      .from("contact_attempts")
+      .insert({ ip_address: ipAddress });
+    if (insertError) {
+      console.error("Failed to record contact attempt:", insertError);
+    }
 
     return new Response(JSON.stringify({ success: true }), {
       status: 200,
