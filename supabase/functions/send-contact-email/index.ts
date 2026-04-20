@@ -136,6 +136,14 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Contact email sent successfully:", emailResponse);
 
+    // Record the attempt for rate limiting (best-effort)
+    const { error: insertError } = await supabase
+      .from("contact_attempts")
+      .insert({ ip_address: ipAddress });
+    if (insertError) {
+      console.error("Failed to record contact attempt:", insertError);
+    }
+
     return new Response(JSON.stringify({ success: true }), {
       status: 200,
       headers: { "Content-Type": "application/json", ...corsHeaders },
