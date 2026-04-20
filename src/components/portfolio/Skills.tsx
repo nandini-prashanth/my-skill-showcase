@@ -15,6 +15,17 @@ const skillCategories = [
     title: "Tools & Others",
     skills: ["Git", "AWS", "CI/CD"],
   },
+  {
+    title: "AI & Automation",
+    skills: [
+      "Workflow Automation (Make)",
+      "AI Product Thinking",
+      "Data Analysis with AI",
+      "Data Visualisation",
+      "Prompt Engineering",
+      "AI Storytelling",
+    ],
+  },
 ];
 
 export function Skills() {
