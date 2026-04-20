@@ -42,6 +42,17 @@ const certificates = [
       "Research work using AI & LinkedIn optimisation with AI",
     ],
   },
+  {
+    title: "AI Product Building, Storytelling & Analytics",
+    issuer: "AI Career Accelerator Program (be10x)",
+    date: "April 20, 2026",
+    image: "/certificates/cert4-1.jpg",
+    skills: [
+      "Workflow Automation with Make",
+      "Data Analysis & Visualisation with AI (Excel, Power BI)",
+      "Product Thinking, AI Innovation & Tech 101",
+    ],
+  },
 ];
 
 export function Certificates() {
