@@ -147,7 +147,44 @@
     @apply transition-all duration-300 hover:bg-card/60 hover:border-primary/30 hover:glow;
   }
 
+  .animated-gradient-bg {
+    background:
+      radial-gradient(ellipse 45% 35% at 18% 25%, hsl(var(--primary) / 0.18), transparent 65%),
+      radial-gradient(ellipse 38% 30% at 82% 18%, hsl(var(--gradient-end) / 0.14), transparent 62%),
+      radial-gradient(ellipse 55% 40% at 50% 88%, hsl(var(--accent) / 0.11), transparent 68%);
+    background-size: 140% 140%, 160% 160%, 130% 130%;
+    animation: gradient-drift 18s ease-in-out infinite alternate;
+  }
+
+  .section-reveal {
+    animation: section-rise 0.7s ease-out both;
+    animation-timeline: view();
+    animation-range: entry 8% cover 32%;
+  }
+
+  .hover-depth {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/10;
+  }
+
   .bg-noise {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@keyframes gradient-drift {
+  0% { background-position: 0% 18%, 100% 0%, 50% 100%; }
+  50% { background-position: 38% 0%, 70% 42%, 24% 78%; }
+  100% { background-position: 100% 30%, 20% 10%, 72% 92%; }
+}
+
+@keyframes section-rise {
+  from { opacity: 0.65; transform: translateY(34px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-gradient-bg,
+  .section-reveal {
+    animation: none;
   }
 }

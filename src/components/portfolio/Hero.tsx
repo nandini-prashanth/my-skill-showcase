@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Mail, Sparkles } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 
-const proofPoints = ["Drupal & React delivery", "AI automation mindset", "Bangalore-based builder"];
+const proofPoints = ["Intelligent web apps", "Automation systems", "Modern React experiences"];
 
 export function Hero() {
   const { scrollY } = useScroll();
@@ -11,10 +11,15 @@ export function Hero() {
 
   return (
     <section className="relative min-h-[92vh] flex items-center overflow-hidden pt-24 pb-16">
+      <div className="absolute inset-0 animated-gradient-bg opacity-80" />
       <motion.div className="absolute inset-0" style={{ y, opacity }}>
         <img src={heroBg} alt="Abstract developer workspace background" className="w-full h-full object-cover opacity-35" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/55 to-background" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,hsl(var(--primary)/0.18),transparent_32%),radial-gradient(circle_at_85%_20%,hsl(var(--accent)/0.14),transparent_28%)]" />
+        <motion.div
+          className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,hsl(var(--primary)/0.18),transparent_32%),radial-gradient(circle_at_85%_20%,hsl(var(--accent)/0.14),transparent_28%)]"
+          animate={{ backgroundPosition: ["0% 0%", "100% 40%", "0% 0%"] }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        />
       </motion.div>
       <div className="absolute inset-0 bg-noise opacity-[0.05] mix-blend-overlay pointer-events-none" />
 
@@ -25,6 +30,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
+              whileHover={{ y: -3, scale: 1.02 }}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-primary text-sm font-medium mb-7"
             >
               <Sparkles className="w-4 h-4" />
@@ -35,9 +41,9 @@ export function Hero() {
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.08 }}
-              className="text-5xl md:text-7xl xl:text-8xl font-display font-bold leading-[0.95] mb-7"
+              className="text-4xl md:text-6xl xl:text-7xl font-display font-bold leading-[0.98] mb-7 max-w-5xl"
             >
-              Nandini builds digital systems with calm precision.
+              AI-powered Full Stack Developer building intelligent web apps, automation systems, and modern React experiences.
             </motion.h1>
 
             <motion.p
@@ -46,7 +52,7 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.16 }}
               className="text-lg md:text-2xl text-muted-foreground max-w-3xl leading-relaxed mb-9"
             >
-              I turn complex web, content, and workflow needs into polished experiences—combining Drupal, PHP, React, data thinking, and AI-enabled automation.
+              I turn complex product, content, and workflow needs into polished systems—combining Drupal, PHP, React, data thinking, and AI-enabled automation.
             </motion.p>
 
             <motion.div
@@ -57,19 +63,19 @@ export function Hero() {
             >
               <motion.a
                 href="#projects"
-                whileHover={{ scale: 1.04, y: -2 }}
+                whileHover={{ scale: 1.04, y: -4 }}
                 whileTap={{ scale: 0.98 }}
-                className="px-8 py-3 rounded-lg bg-primary text-primary-foreground font-semibold transition-all duration-300 hover:glow text-center"
+                className="px-8 py-3 rounded-lg bg-primary text-primary-foreground font-semibold transition-all duration-300 hover:glow text-center shadow-lg shadow-primary/20"
               >
-                Explore Case Studies
+                Explore AI Projects
               </motion.a>
               <motion.a
                 href="#ai"
-                whileHover={{ scale: 1.04, y: -2 }}
+                whileHover={{ scale: 1.04, y: -4 }}
                 whileTap={{ scale: 0.98 }}
                 className="px-8 py-3 rounded-lg glass glass-hover text-foreground font-semibold text-center"
               >
-                Try AI Portfolio Tools
+                Talk to My AI Assistant
               </motion.a>
             </motion.div>
 
@@ -118,7 +124,8 @@ export function Hero() {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.45 + index * 0.12 }}
-                    className="rounded-lg bg-secondary/70 border border-border p-5"
+                    whileHover={{ x: 8, scale: 1.02 }}
+                    className="rounded-lg bg-secondary/70 border border-border p-5 transition-shadow duration-300 hover:shadow-xl hover:shadow-primary/10"
                   >
                     <p className="text-sm text-primary font-medium mb-2">0{index + 1}</p>
                     <p className="font-display text-2xl font-semibold">{point}</p>
