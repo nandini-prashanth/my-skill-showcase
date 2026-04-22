@@ -8,40 +8,40 @@
 
 @layer base {
   :root {
-    --background: 220 20% 6%;
+    --background: 222 36% 5%;
     --foreground: 210 40% 98%;
 
-    --card: 220 20% 10%;
+    --card: 224 30% 9%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 220 20% 10%;
+    --popover: 224 30% 9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 190 95% 50%;
-    --primary-foreground: 220 20% 6%;
+    --primary: 206 100% 62%;
+    --primary-foreground: 222 36% 5%;
 
-    --secondary: 220 20% 14%;
+    --secondary: 225 28% 13%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 220 15% 18%;
-    --muted-foreground: 215 20% 55%;
+    --muted: 224 22% 17%;
+    --muted-foreground: 218 20% 66%;
 
-    --accent: 190 95% 50%;
-    --accent-foreground: 220 20% 6%;
+    --accent: 152 84% 55%;
+    --accent-foreground: 222 36% 5%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 15% 20%;
-    --input: 220 15% 20%;
-    --ring: 190 95% 50%;
+    --border: 224 24% 20%;
+    --input: 224 24% 20%;
+    --ring: 206 100% 62%;
 
-    --radius: 0.75rem;
+    --radius: 0.65rem;
 
     /* Custom tokens */
-    --glow: 190 95% 50%;
-    --gradient-start: 190 95% 50%;
-    --gradient-end: 260 80% 60%;
+    --glow: 206 100% 62%;
+    --gradient-start: 206 100% 62%;
+    --gradient-end: 267 92% 68%;
     
     --font-display: 'Space Grotesk', sans-serif;
     --font-body: 'Inter', sans-serif;
@@ -84,10 +84,10 @@
     font-family: var(--font-body);
     background-color: hsl(var(--background));
     background-image:
-      radial-gradient(ellipse 80% 60% at 15% 0%, hsl(190 95% 50% / 0.14), transparent 60%),
-      radial-gradient(ellipse 70% 50% at 85% 10%, hsl(260 80% 60% / 0.16), transparent 60%),
-      radial-gradient(ellipse 90% 60% at 50% 100%, hsl(220 60% 30% / 0.20), transparent 70%),
-      linear-gradient(180deg, hsl(220 28% 5%) 0%, hsl(222 30% 7%) 50%, hsl(220 28% 5%) 100%);
+      radial-gradient(ellipse 80% 60% at 15% 0%, hsl(206 100% 62% / 0.13), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 85% 10%, hsl(267 92% 68% / 0.16), transparent 60%),
+      radial-gradient(ellipse 88% 58% at 50% 100%, hsl(152 84% 55% / 0.10), transparent 70%),
+      linear-gradient(180deg, hsl(222 44% 4%) 0%, hsl(224 38% 6%) 48%, hsl(222 44% 4%) 100%);
     background-attachment: fixed;
     position: relative;
   }
