@@ -103,12 +103,12 @@ export function AITools() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-primary font-medium mb-4 block">AI Portfolio Tools</span>
+          <span className="text-primary font-medium mb-4 block">Try my AI assistant 🤖</span>
           <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
-            Explore my work with <span className="text-gradient">AI assistance</span>
+            A live product layer for exploring <span className="text-gradient">fit, skills, and stories</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Use these tools to ask questions, turn resume text into a sharper story, or match your needs to the most relevant case study.
+            Ask questions, summarize experience, or match a project need to the most relevant case study — directly inside the portfolio.
           </p>
         </motion.div>
 
@@ -117,10 +117,10 @@ export function AITools() {
             initial={{ opacity: 0, x: -36 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="glass rounded-2xl p-6 md:p-8 min-h-[34rem] flex flex-col"
+            className="glass rounded-2xl p-6 md:p-8 min-h-[34rem] flex flex-col glass-hover hover-depth"
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 rounded-lg bg-primary/10 text-primary"><Bot className="w-6 h-6" /></div>
+              <div className="p-3 rounded-lg bg-primary/10 text-primary shadow-lg shadow-primary/10"><Bot className="w-6 h-6" /></div>
               <div>
                 <h3 className="font-display text-2xl font-bold">Portfolio chatbot</h3>
                 <p className="text-muted-foreground text-sm">Ask about Nandini’s skills, projects, and fit.</p>
@@ -167,7 +167,7 @@ export function AITools() {
               initial={{ opacity: 0, x: 36 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.18 }}
-              className="glass rounded-2xl p-6"
+              className="glass rounded-2xl p-6 glass-hover hover-depth"
             >
               <div className="flex items-center gap-3 mb-5">
                 <div className="p-3 rounded-lg bg-primary/10 text-primary"><FileText className="w-5 h-5" /></div>
@@ -195,7 +195,7 @@ export function AITools() {
               initial={{ opacity: 0, x: 36 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.26 }}
-              className="glass rounded-2xl p-6"
+              className="glass rounded-2xl p-6 glass-hover hover-depth"
             >
               <div className="flex items-center gap-3 mb-5">
                 <div className="p-3 rounded-lg bg-primary/10 text-primary"><Sparkles className="w-5 h-5" /></div>

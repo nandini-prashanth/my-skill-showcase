@@ -1,8 +1,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowDown, Github, Linkedin, Mail, Sparkles } from "lucide-react";
+import { ArrowDown, Bot, Github, Linkedin, Mail, Sparkles } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 
-const proofPoints = ["Intelligent web apps", "Automation systems", "Modern React experiences"];
+const proofPoints = ["AI copilots for content-heavy workflows", "Automation layers that remove repeat work", "Product interfaces built for clarity and speed"];
 
 export function Hero() {
   const { scrollY } = useScroll();
@@ -34,7 +34,7 @@ export function Hero() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-primary text-sm font-medium mb-7"
             >
               <Sparkles className="w-4 h-4" />
-              Full Stack Developer · AI & Automation Explorer
+              AI systems · Product engineering · Automation
             </motion.div>
 
             <motion.h1
@@ -43,7 +43,7 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.08 }}
               className="text-4xl md:text-6xl xl:text-7xl font-display font-bold leading-[0.98] mb-7 max-w-5xl"
             >
-              AI-powered Full Stack Developer building intelligent web apps, automation systems, and modern React experiences.
+              I build AI-powered systems that turn complex workflows into clear product experiences.
             </motion.h1>
 
             <motion.p
@@ -52,7 +52,7 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.16 }}
               className="text-lg md:text-2xl text-muted-foreground max-w-3xl leading-relaxed mb-9"
             >
-              I turn complex product, content, and workflow needs into polished systems—combining Drupal, PHP, React, data thinking, and AI-enabled automation.
+              Premium web apps, intelligent assistants, and automation layers designed with product storytelling, fast interaction, and practical engineering depth.
             </motion.p>
 
             <motion.div
@@ -75,7 +75,7 @@ export function Hero() {
                 whileTap={{ scale: 0.98 }}
                 className="px-8 py-3 rounded-lg glass glass-hover text-foreground font-semibold text-center"
               >
-                Talk to My AI Assistant
+                <span className="inline-flex items-center justify-center gap-2"><Bot className="w-4 h-4" /> Talk to My AI Assistant</span>
               </motion.a>
             </motion.div>
 
@@ -111,7 +111,8 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.22 }}
             className="relative hidden lg:block"
           >
-            <div className="glass rounded-2xl p-7 shadow-2xl">
+            <div className="glass rounded-2xl p-7 shadow-2xl relative overflow-hidden">
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/70 to-transparent" />
               <div className="flex items-center gap-2 mb-7">
                 <span className="w-3 h-3 rounded-full bg-primary/80" />
                 <span className="w-3 h-3 rounded-full bg-accent/60" />
@@ -127,7 +128,7 @@ export function Hero() {
                     whileHover={{ x: 8, scale: 1.02 }}
                     className="rounded-lg bg-secondary/70 border border-border p-5 transition-shadow duration-300 hover:shadow-xl hover:shadow-primary/10"
                   >
-                    <p className="text-sm text-primary font-medium mb-2">0{index + 1}</p>
+                    <p className="text-sm text-primary font-medium mb-2">SYSTEM / 0{index + 1}</p>
                     <p className="font-display text-2xl font-semibold">{point}</p>
                   </motion.div>
                 ))}
