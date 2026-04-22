@@ -1,47 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 /* Portfolio Design System - Dark Elegant Theme */
 
 @layer base {
   :root {
-    --background: 220 20% 6%;
+    --background: 222 36% 5%;
     --foreground: 210 40% 98%;
 
-    --card: 220 20% 10%;
+    --card: 224 30% 9%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 220 20% 10%;
+    --popover: 224 30% 9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 190 95% 50%;
-    --primary-foreground: 220 20% 6%;
+    --primary: 206 100% 62%;
+    --primary-foreground: 222 36% 5%;
 
-    --secondary: 220 20% 14%;
+    --secondary: 225 28% 13%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 220 15% 18%;
-    --muted-foreground: 215 20% 55%;
+    --muted: 224 22% 17%;
+    --muted-foreground: 218 20% 66%;
 
-    --accent: 190 95% 50%;
-    --accent-foreground: 220 20% 6%;
+    --accent: 152 84% 55%;
+    --accent-foreground: 222 36% 5%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 15% 20%;
-    --input: 220 15% 20%;
-    --ring: 190 95% 50%;
+    --border: 224 24% 20%;
+    --input: 224 24% 20%;
+    --ring: 206 100% 62%;
 
-    --radius: 0.75rem;
+    --radius: 0.65rem;
 
     /* Custom tokens */
-    --glow: 190 95% 50%;
-    --gradient-start: 190 95% 50%;
-    --gradient-end: 260 80% 60%;
+    --glow: 206 100% 62%;
+    --gradient-start: 206 100% 62%;
+    --gradient-end: 267 92% 68%;
     
     --font-display: 'Space Grotesk', sans-serif;
     --font-body: 'Inter', sans-serif;
@@ -80,8 +80,44 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply text-foreground antialiased;
     font-family: var(--font-body);
+    background-color: hsl(var(--background));
+    background-image:
+      radial-gradient(ellipse 80% 60% at 15% 0%, hsl(206 100% 62% / 0.13), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 85% 10%, hsl(267 92% 68% / 0.16), transparent 60%),
+      radial-gradient(ellipse 88% 58% at 50% 100%, hsl(152 84% 55% / 0.10), transparent 70%),
+      linear-gradient(180deg, hsl(222 44% 4%) 0%, hsl(224 38% 6%) 48%, hsl(222 44% 4%) 100%);
+    background-attachment: fixed;
+    position: relative;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+      linear-gradient(hsl(190 95% 50% / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(190 95% 50% / 0.05) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black, transparent 80%);
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(ellipse at center, transparent 50%, hsl(220 35% 3% / 0.65) 100%);
+  }
+
+  #root {
+    position: relative;
+    z-index: 1;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -104,10 +140,51 @@
   }
 
   .glass {
-    @apply bg-card/50 backdrop-blur-xl border border-border/50;
+    @apply bg-card/40 backdrop-blur-xl border border-border/50;
   }
 
   .glass-hover {
-    @apply transition-all duration-300 hover:bg-card/70 hover:border-primary/30 hover:glow;
+    @apply transition-all duration-300 hover:bg-card/60 hover:border-primary/30 hover:glow;
+  }
+
+  .animated-gradient-bg {
+    background:
+      radial-gradient(ellipse 45% 35% at 18% 25%, hsl(var(--primary) / 0.18), transparent 65%),
+      radial-gradient(ellipse 38% 30% at 82% 18%, hsl(var(--gradient-end) / 0.14), transparent 62%),
+      radial-gradient(ellipse 55% 40% at 50% 88%, hsl(var(--accent) / 0.11), transparent 68%);
+    background-size: 140% 140%, 160% 160%, 130% 130%;
+    animation: gradient-drift 18s ease-in-out infinite alternate;
+  }
+
+  .section-reveal {
+    animation: section-rise 0.7s ease-out both;
+    animation-timeline: view();
+    animation-range: entry 8% cover 32%;
+  }
+
+  .hover-depth {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/10;
+  }
+
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@keyframes gradient-drift {
+  0% { background-position: 0% 18%, 100% 0%, 50% 100%; }
+  50% { background-position: 38% 0%, 70% 42%, 24% 78%; }
+  100% { background-position: 100% 30%, 20% 10%, 72% 92%; }
+}
+
+@keyframes section-rise {
+  from { opacity: 0.65; transform: translateY(34px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-gradient-bg,
+  .section-reveal {
+    animation: none;
   }
 }

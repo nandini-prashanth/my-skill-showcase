@@ -1,5 +1,9 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "https://esm.sh/resend@2.0.0";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
+
+const RATE_LIMIT_MAX = 5;
+const RATE_LIMIT_WINDOW_MINUTES = 60;
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -26,6 +30,49 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     const resend = new Resend(RESEND_API_KEY);
+
+    // Identify caller IP (best-effort)
+    const forwardedFor = req.headers.get("x-forwarded-for") ?? "";
+    const ipAddress =
+      forwardedFor.split(",")[0].trim() ||
+      req.headers.get("x-real-ip") ||
+      "unknown";
+
+    // Rate limit check via Supabase service role
+    const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
+    const SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+    if (!SUPABASE_URL || !SERVICE_ROLE_KEY) {
+      throw new Error("Supabase service credentials not configured");
+    }
+    const supabase = createClient(SUPABASE_URL, SERVICE_ROLE_KEY);
+
+    const windowStart = new Date(
+      Date.now() - RATE_LIMIT_WINDOW_MINUTES * 60 * 1000
+    ).toISOString();
+
+    const { count, error: countError } = await supabase
+      .from("contact_attempts")
+      .select("*", { count: "exact", head: true })
+      .eq("ip_address", ipAddress)
+      .gte("attempted_at", windowStart);
+
+    if (countError) {
+      console.error("Rate limit lookup failed:", countError);
+      throw new Error("Rate limit check failed");
+    }
+
+    if ((count ?? 0) >= RATE_LIMIT_MAX) {
+      return new Response(
+        JSON.stringify({
+          error: "Too many requests. Please try again later.",
+        }),
+        {
+          status: 429,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
+    }
+
     const { name, email, message }: ContactRequest = await req.json();
 
     // Validate required fields
@@ -62,21 +109,40 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
+    const escapeHtml = (s: string) =>
+      s.replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safeMessage = escapeHtml(message).replace(/\n/g, "<br>");
+
     const emailResponse = await resend.emails.send({
       from: "Portfolio Contact <onboarding@resend.dev>",
       to: ["nandini.hv8@gmail.com"],
-      subject: `New Contact Form Message from ${name}`,
+      subject: `New Contact Form Message from ${safeName}`,
       html: `
         <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Name:</strong> ${safeName}</p>
+        <p><strong>Email:</strong> ${safeEmail}</p>
         <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, "<br>")}</p>
+        <p>${safeMessage}</p>
       `,
       reply_to: email,
     });
 
     console.log("Contact email sent successfully:", emailResponse);
+
+    // Record the attempt for rate limiting (best-effort)
+    const { error: insertError } = await supabase
+      .from("contact_attempts")
+      .insert({ ip_address: ipAddress });
+    if (insertError) {
+      console.error("Failed to record contact attempt:", insertError);
+    }
 
     return new Response(JSON.stringify({ success: true }), {
       status: 200,
@@ -84,9 +150,8 @@ const handler = async (req: Request): Promise<Response> => {
     });
   } catch (error: unknown) {
     console.error("Error in send-contact-email function:", error);
-    const errorMessage = error instanceof Error ? error.message : "Unknown error";
     return new Response(
-      JSON.stringify({ error: errorMessage }),
+      JSON.stringify({ error: "Failed to send message. Please try again later." }),
       {
         status: 500,
         headers: { "Content-Type": "application/json", ...corsHeaders },

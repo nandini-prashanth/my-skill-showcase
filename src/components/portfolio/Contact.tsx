@@ -55,13 +55,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 relative" ref={ref}>
-      {/* Background decoration */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
-      </div>
-
+    <section id="contact" className="py-24 relative section-reveal" ref={ref}>
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -69,23 +63,22 @@ export function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-primary font-medium mb-4 block">Get In Touch</span>
+          <span className="text-primary font-medium mb-4 block">Minimal Contact</span>
           <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
-            Let's Work{" "}
-            <span className="text-gradient">Together</span>
+            Have an AI product idea? <span className="text-gradient">Let’s shape it.</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Have a project in mind? I'd love to hear about it. Let's create something amazing together.
+            Send the goal, workflow, or product challenge — I’ll respond with a clear next step.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+        <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-8 max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="glass rounded-2xl p-8">
+            <div className="glass rounded-2xl p-8 glass-hover">
               <h3 className="font-display font-bold text-2xl mb-6">
                 Send me a message
               </h3>
@@ -161,7 +154,7 @@ export function Contact() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="flex flex-col justify-center"
           >
-            <div className="space-y-8">
+            <div className="space-y-5">
               <div className="glass rounded-xl p-6 glass-hover">
                 <div className="flex items-center gap-4">
                   <div className="p-3 rounded-lg bg-primary/10 text-primary">
@@ -193,10 +186,9 @@ export function Contact() {
                 </div>
               </div>
 
-              <div className="glass rounded-xl p-6">
+              <div className="glass rounded-xl p-6 glass-hover">
                 <p className="text-muted-foreground leading-relaxed">
-                  I'm currently available for freelance work and full-time opportunities. 
-                  If you have a project that needs creative problem-solving, let's talk!
+                  Available for AI-powered web apps, workflow automation, product interfaces, and content-heavy systems that need clarity.
                 </p>
               </div>
             </div>

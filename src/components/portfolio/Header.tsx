@@ -2,10 +2,9 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const navItems = [
-  { name: "About", href: "#about", id: "about" },
-  { name: "Skills", href: "#skills", id: "skills" },
-  { name: "Projects", href: "#projects", id: "projects" },
-  { name: "Certificates", href: "#certificates", id: "certificates" },
+  { name: "Systems", href: "#projects", id: "projects" },
+  { name: "Assistant", href: "#ai", id: "ai" },
+  { name: "Capabilities", href: "#skills", id: "skills" },
   { name: "Contact", href: "#contact", id: "contact" },
 ];
 
@@ -47,7 +46,7 @@ export function Header() {
       <div className="container mx-auto px-6 py-4">
         <nav className="flex items-center justify-end">
           
-          <ul className="hidden md:flex items-center gap-8">
+          <ul className="hidden md:flex items-center gap-6">
             {navItems.map((item, index) => (
               <motion.li
                 key={item.name}
