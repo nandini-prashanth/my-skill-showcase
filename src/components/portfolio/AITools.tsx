@@ -130,10 +130,10 @@ export function AITools() {
             <div className="flex-1 rounded-lg bg-secondary/60 border border-border p-4 overflow-y-auto space-y-4 mb-5 max-h-[26rem]">
               {chatMessages.map((message, index) => (
                 <div key={`${message.role}-${index}`} className={message.role === "user" ? "flex justify-end" : "flex justify-start"}>
-                  <div className={`max-w-[88%] rounded-lg p-4 ${message.role === "user" ? "bg-primary text-primary-foreground" : "bg-card border border-border"}`}>
-                    <div className="prose prose-sm prose-invert max-w-none prose-p:my-0 prose-ul:my-2 prose-li:my-0">
-                      <ReactMarkdown>{message.content}</ReactMarkdown>
-                    </div>
+                    <div className={`max-w-[88%] rounded-lg p-4 ${message.role === "user" ? "bg-primary text-primary-foreground" : "bg-card border border-border"}`}>
+                      <div className="prose prose-sm prose-invert max-w-none prose-p:my-0 prose-ul:my-2 prose-li:my-0">
+                        <ReactMarkdown>{message.content}</ReactMarkdown>
+                      </div>
                   </div>
                 </div>
               ))}
