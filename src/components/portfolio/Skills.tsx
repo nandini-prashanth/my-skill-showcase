@@ -29,7 +29,7 @@ export function Skills() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="skills" className="py-24 relative" ref={ref}>
+    <section id="skills" className="py-24 relative section-reveal" ref={ref}>
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -53,8 +53,8 @@ export function Skills() {
               initial={{ opacity: 0, y: 44 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.55, delay: categoryIndex * 0.08 }}
-              whileHover={{ y: -6 }}
-              className="glass rounded-2xl p-7 glass-hover min-h-[25rem] flex flex-col"
+              whileHover={{ y: -8, scale: 1.015 }}
+              className="glass rounded-2xl p-7 glass-hover hover-depth min-h-[25rem] flex flex-col"
             >
               <div className="mb-7">
                 <p className="text-primary text-sm font-medium mb-3">0{categoryIndex + 1}</p>

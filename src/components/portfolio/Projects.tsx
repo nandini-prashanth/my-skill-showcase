@@ -50,7 +50,7 @@ export function Projects() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="projects" className="py-24 relative" ref={ref}>
+    <section id="projects" className="py-24 relative section-reveal" ref={ref}>
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -74,7 +74,8 @@ export function Projects() {
               initial={{ opacity: 0, y: 42 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.55, delay: index * 0.08 }}
-              className="glass rounded-2xl p-6 md:p-8 glass-hover group"
+              whileHover={{ y: -8, scale: 1.008 }}
+              className="glass rounded-2xl p-6 md:p-8 glass-hover hover-depth group"
             >
               <div className="grid lg:grid-cols-[0.78fr_1.22fr] gap-8">
                 <div className="flex flex-col justify-between gap-6">
@@ -100,10 +101,10 @@ export function Projects() {
                     ["Approach", project.approach],
                     ["Outcome", project.outcome],
                   ].map(([label, copy]) => (
-                    <div key={label} className="rounded-lg bg-secondary/60 border border-border p-5">
+                    <motion.div key={label} whileHover={{ y: -5 }} className="rounded-lg bg-secondary/60 border border-border p-5 transition-colors duration-300 hover:border-primary/30">
                       <p className="text-primary text-sm font-semibold mb-3">{label}</p>
                       <p className="text-muted-foreground leading-relaxed text-sm">{copy}</p>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
