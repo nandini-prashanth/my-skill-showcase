@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Cpu, Layers, Zap } from "lucide-react";
 import { useRef } from "react";
 
 const projects = [
@@ -45,6 +45,8 @@ const projects = [
   },
 ];
 
+const systemSignals = [Cpu, Layers, Zap];
+
 export function Projects() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -58,12 +60,12 @@ export function Projects() {
           transition={{ duration: 0.6 }}
           className="max-w-4xl mb-16"
         >
-          <span className="text-primary font-medium mb-4 block">Case Studies</span>
+          <span className="text-primary font-medium mb-4 block">Featured AI Projects</span>
           <h2 className="text-4xl md:text-6xl font-display font-bold mb-6 leading-tight">
-            Projects shaped around clarity, content, and real users.
+            Case studies framed like product systems.
           </h2>
           <p className="text-muted-foreground text-lg md:text-xl leading-relaxed">
-            These case studies show my experience translating domain-heavy requirements into structured, useful digital products.
+            A product-style view of how I shape messy content, workflows, and user needs into intelligent digital experiences.
           </p>
         </motion.div>
 
@@ -75,8 +77,9 @@ export function Projects() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.55, delay: index * 0.08 }}
               whileHover={{ y: -8, scale: 1.008 }}
-              className="glass rounded-2xl p-6 md:p-8 glass-hover hover-depth group"
+              className="glass rounded-2xl p-6 md:p-8 glass-hover hover-depth group relative overflow-hidden"
             >
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
               <div className="grid lg:grid-cols-[0.78fr_1.22fr] gap-8">
                 <div className="flex flex-col justify-between gap-6">
                   <div>
@@ -85,6 +88,7 @@ export function Projects() {
                       <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
                     </div>
                     <h3 className="font-display font-bold text-3xl md:text-4xl mb-4">{project.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed">Built as a focused product surface: structured content, clear user paths, and an experience that makes complex information easier to act on.</p>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
@@ -102,7 +106,13 @@ export function Projects() {
                     ["Outcome", project.outcome],
                   ].map(([label, copy]) => (
                     <motion.div key={label} whileHover={{ y: -5 }} className="rounded-lg bg-secondary/60 border border-border p-5 transition-colors duration-300 hover:border-primary/30">
-                      <p className="text-primary text-sm font-semibold mb-3">{label}</p>
+                      <div className="flex items-center gap-2 text-primary text-sm font-semibold mb-3">
+                        {(() => {
+                          const Icon = systemSignals[["Challenge", "Approach", "Outcome"].indexOf(label as string)] ?? Layers;
+                          return <Icon className="w-4 h-4" />;
+                        })()}
+                        {label}
+                      </div>
                       <p className="text-muted-foreground leading-relaxed text-sm">{copy}</p>
                     </motion.div>
                   ))}

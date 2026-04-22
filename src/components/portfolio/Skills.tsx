@@ -3,23 +3,23 @@ import { useRef } from "react";
 
 const skillCategories = [
   {
-    title: "Frontend Craft",
-    description: "Interfaces that feel polished, responsive, and maintainable.",
+    title: "Product interface systems",
+    description: "Premium frontends with strong hierarchy, responsive states, and motion that makes the product feel alive.",
     skills: ["React", "TypeScript", "Tailwind CSS", "JavaScript", "HTML", "CSS"],
   },
   {
-    title: "Backend & CMS",
-    description: "Reliable content systems, APIs, and data-backed experiences.",
+    title: "Content and workflow engines",
+    description: "Structured CMS, API, and data flows that make complex information easy to publish, find, and maintain.",
     skills: ["Drupal", "PHP", "Node.js", "Python", "MySQL", "REST APIs"],
   },
   {
-    title: "Delivery Toolkit",
-    description: "Practical engineering habits for collaboration and release quality.",
+    title: "Reliable delivery loops",
+    description: "Practical engineering habits for shipping cleanly, collaborating well, and improving without adding noise.",
     skills: ["Git", "AWS", "CI/CD", "Bootstrap", "jQuery", "Ajax"],
   },
   {
-    title: "AI & Automation",
-    description: "Using AI to summarize, recommend, analyze, and automate workflows.",
+    title: "AI automation layers",
+    description: "Assistants, summarizers, recommenders, and workflow automations that make products feel smarter.",
     skills: ["Workflow Automation", "Prompt Engineering", "AI Product Thinking", "Data Analysis", "Data Visualisation", "AI Storytelling"],
   },
 ];
@@ -37,12 +37,12 @@ export function Skills() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-primary font-medium mb-4 block">Skill System</span>
+          <span className="text-primary font-medium mb-4 block">Capabilities</span>
           <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
-            A stack built for <span className="text-gradient">practical impact</span>
+            Skills presented as <span className="text-gradient">product capabilities</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            From CMS-heavy builds to AI-assisted workflows, I combine stable engineering with curiosity for smarter delivery.
+            Not a tools checklist — a system of capabilities for designing, building, and improving AI-powered digital products.
           </p>
         </motion.div>
 
