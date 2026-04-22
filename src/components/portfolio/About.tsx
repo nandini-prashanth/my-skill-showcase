@@ -1,23 +1,27 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { BrainCircuit, Code2, Layers3, Rocket } from "lucide-react";
 import { useRef } from "react";
-import { Code2, Palette, Rocket } from "lucide-react";
 
 const highlights = [
   {
     icon: Code2,
-    title: "Clean Code",
-    description: "Writing maintainable, scalable, and efficient code is my passion.",
+    title: "Engineering with ownership",
+    description: "I build maintainable Drupal, PHP, React, and TypeScript experiences that teams can keep improving after launch.",
   },
   {
-    icon: Palette,
-    title: "Design Focused",
-    description: "Creating beautiful interfaces that users love to interact with.",
+    icon: Layers3,
+    title: "Content-heavy systems",
+    description: "My work spans restaurants, politics, sustainability, BIM, and citizen science—domains where structure and clarity matter.",
+  },
+  {
+    icon: BrainCircuit,
+    title: "AI-aware delivery",
+    description: "I use automation, prompt design, and data analysis to speed up workflows while keeping the product grounded in user needs.",
   },
   {
     icon: Rocket,
-    title: "Performance",
-    description: "Building fast, optimized applications that deliver results.",
+    title: "Performance mindset",
+    description: "I focus on fast interfaces, clean handoffs, and practical decisions that turn ideas into shipped products.",
   },
 ];
 
@@ -29,68 +33,63 @@ export function About() {
     <section id="about" className="py-24 relative" ref={ref}>
       <div className="container mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="max-w-4xl mb-16"
         >
-          <span className="text-primary font-medium mb-4 block">About Me</span>
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
-            Turning Ideas Into{" "}
-            <span className="text-gradient">Reality</span>
+          <span className="text-primary font-medium mb-4 block">About Nandini</span>
+          <h2 className="text-4xl md:text-6xl font-display font-bold mb-6 leading-tight">
+            A developer who connects engineering, storytelling, and automation.
           </h2>
+          <p className="text-muted-foreground text-lg md:text-xl leading-relaxed">
+            Based in Bangalore, I bring a full-stack mindset to digital products: shaping content architecture, building reliable interfaces, and exploring how AI can make everyday work smarter.
+          </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-8 items-stretch">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="glass rounded-2xl p-8 flex flex-col justify-between"
           >
-            <div className="glass rounded-2xl p-8 glass-hover">
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                I'm a developer with a passion for creating exceptional digital experiences. 
-                With expertise in modern web technologies, I build applications that are not 
-                only functional but also beautiful and intuitive.
+            <div>
+              <p className="text-2xl font-display font-semibold mb-6">Personal brand</p>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                I’m strongest where practical development meets thoughtful product judgment. I can translate ambiguous requirements into working systems, improve existing sites without overcomplicating them, and use AI as a productivity layer rather than a gimmick.
               </p>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                My journey in tech started with a curiosity about how things work, which 
-                evolved into a career dedicated to crafting solutions that make a difference. 
-                I believe in continuous learning and staying updated with the latest trends.
+              <p className="text-muted-foreground leading-relaxed">
+                My portfolio reflects work across public information platforms, business websites, and content-rich experiences—each built with attention to usability, maintainability, and real-world constraints.
               </p>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                When I'm not coding, you'll find me exploring new technologies, contributing 
-                to open-source projects, or sharing knowledge with the developer community.
-              </p>
+            </div>
+            <div className="grid grid-cols-3 gap-3 mt-8">
+              {["10+", "5", "AI+"].map((metric, index) => (
+                <div key={metric} className="rounded-lg bg-secondary/70 border border-border p-4 text-center">
+                  <p className="text-2xl font-display font-bold text-primary">{metric}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{["Skills", "Case studies", "Automation"][index]}</p>
+                </div>
+              ))}
             </div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="space-y-6"
-          >
+          <div className="grid sm:grid-cols-2 gap-5">
             {highlights.map((item, index) => (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 28 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
-                className="glass rounded-xl p-6 glass-hover flex items-start gap-4"
+                transition={{ duration: 0.5, delay: 0.25 + index * 0.08 }}
+                className="glass rounded-xl p-6 glass-hover"
               >
-                <div className="p-3 rounded-lg bg-primary/10 text-primary">
+                <div className="p-3 rounded-lg bg-primary/10 text-primary w-fit mb-5">
                   <item.icon className="w-6 h-6" />
                 </div>
-                <div>
-                  <h3 className="font-display font-semibold text-lg mb-1">
-                    {item.title}
-                  </h3>
-                  <p className="text-muted-foreground">{item.description}</p>
-                </div>
+                <h3 className="font-display font-semibold text-xl mb-3">{item.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{item.description}</p>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
