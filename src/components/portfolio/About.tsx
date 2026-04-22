@@ -30,7 +30,7 @@ export function About() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="py-24 relative" ref={ref}>
+    <section id="about" className="py-24 relative section-reveal" ref={ref}>
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -52,7 +52,8 @@ export function About() {
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="glass rounded-2xl p-8 flex flex-col justify-between"
+            whileHover={{ y: -6, rotateX: 1.5, rotateY: -1.5 }}
+            className="glass rounded-2xl p-8 flex flex-col justify-between hover-depth"
           >
             <div>
               <p className="text-2xl font-display font-semibold mb-6">Personal brand</p>
@@ -65,10 +66,10 @@ export function About() {
             </div>
             <div className="grid grid-cols-3 gap-3 mt-8">
               {["10+", "5", "AI+"].map((metric, index) => (
-                <div key={metric} className="rounded-lg bg-secondary/70 border border-border p-4 text-center">
+                <motion.div key={metric} whileHover={{ y: -4, scale: 1.04 }} className="rounded-lg bg-secondary/70 border border-border p-4 text-center">
                   <p className="text-2xl font-display font-bold text-primary">{metric}</p>
                   <p className="text-xs text-muted-foreground mt-1">{["Skills", "Case studies", "Automation"][index]}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
           </motion.div>
@@ -80,7 +81,8 @@ export function About() {
                 initial={{ opacity: 0, y: 28 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.25 + index * 0.08 }}
-                className="glass rounded-xl p-6 glass-hover"
+                whileHover={{ y: -7, scale: 1.015 }}
+                className="glass rounded-xl p-6 glass-hover hover-depth"
               >
                 <div className="p-3 rounded-lg bg-primary/10 text-primary w-fit mb-5">
                   <item.icon className="w-6 h-6" />
