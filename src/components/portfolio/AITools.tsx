@@ -131,9 +131,9 @@ export function AITools() {
               {chatMessages.map((message, index) => (
                 <div key={`${message.role}-${index}`} className={message.role === "user" ? "flex justify-end" : "flex justify-start"}>
                   <div className={`max-w-[88%] rounded-lg p-4 ${message.role === "user" ? "bg-primary text-primary-foreground" : "bg-card border border-border"}`}>
-                    <ReactMarkdown className="prose prose-sm prose-invert max-w-none prose-p:my-0 prose-ul:my-2 prose-li:my-0">
-                      {message.content}
-                    </ReactMarkdown>
+                    <div className="prose prose-sm prose-invert max-w-none prose-p:my-0 prose-ul:my-2 prose-li:my-0">
+                      <ReactMarkdown>{message.content}</ReactMarkdown>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -184,7 +184,11 @@ export function AITools() {
                 {loadingMode === "resume" ? <Loader2 className="w-5 h-5 animate-spin" /> : <Sparkles className="w-5 h-5" />}
                 Summarize Resume
               </button>
-              {resumeSummary && <ReactMarkdown className="prose prose-sm prose-invert max-w-none mt-5 text-muted-foreground">{resumeSummary}</ReactMarkdown>}
+              {resumeSummary && (
+                <div className="prose prose-sm prose-invert max-w-none mt-5 text-muted-foreground">
+                  <ReactMarkdown>{resumeSummary}</ReactMarkdown>
+                </div>
+              )}
             </motion.article>
 
             <motion.article
@@ -208,7 +212,11 @@ export function AITools() {
                 {loadingMode === "recommender" ? <Loader2 className="w-5 h-5 animate-spin" /> : <Sparkles className="w-5 h-5" />}
                 Recommend Case Study
               </button>
-              {recommendation && <ReactMarkdown className="prose prose-sm prose-invert max-w-none mt-5 text-muted-foreground">{recommendation}</ReactMarkdown>}
+              {recommendation && (
+                <div className="prose prose-sm prose-invert max-w-none mt-5 text-muted-foreground">
+                  <ReactMarkdown>{recommendation}</ReactMarkdown>
+                </div>
+              )}
             </motion.article>
           </div>
         </div>
