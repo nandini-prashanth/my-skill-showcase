@@ -12,6 +12,10 @@ export function Hero() {
   return (
     <section className="relative min-h-[92vh] flex items-center overflow-hidden pt-24 pb-16">
       <div className="absolute inset-0 animated-gradient-bg opacity-80" />
+      <motion.div
+        className="absolute inset-0 parallax-glow opacity-80 will-change-transform"
+        style={{ y: useTransform(scrollY, [0, 700], [0, -90]) }}
+      />
       <motion.div className="absolute inset-0" style={{ y, opacity }}>
         <img src={heroBg} alt="Abstract developer workspace background" className="w-full h-full object-cover opacity-35" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/55 to-background" />
