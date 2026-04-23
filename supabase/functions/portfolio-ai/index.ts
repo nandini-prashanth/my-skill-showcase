@@ -11,9 +11,17 @@ type Mode = "chat" | "resume" | "recommender";
 
 const portfolioContext = `
 Nandini is a full stack developer based in Bangalore, India.
-Core stack: Drupal, PHP, MySQL, React, TypeScript, Tailwind CSS, JavaScript, HTML, CSS, jQuery, Ajax, Bootstrap, Node.js, Python, REST APIs, Git, AWS, CI/CD.
-AI and automation skills: workflow automation, AI product thinking, data analysis with AI, data visualisation, prompt engineering, AI storytelling.
-Contact: nandini.hv8@gmail.com. GitHub: nandini-prashanth. LinkedIn: nandini-gowda-9193b741.
+Resume reference: Drupal Developer with 7+ years of experience building scalable web applications using Drupal and PHP. Expertise includes custom module development, theming, API integrations, content architecture, and performance optimization.
+Current positioning: AI-powered Full Stack Developer building intelligent web apps, automation systems, and modern React experiences.
+Core stack: Drupal 7/8/9/10, PHP, MySQL, ReactJS, TypeScript, Tailwind CSS, JavaScript, HTML, CSS, jQuery, Ajax, Bootstrap, Node.js, Python, REST APIs, Git, AWS, CI/CD.
+Drupal expertise: custom modules, hooks, Entity API, Views, Taxonomy, Theming, REST API integrations, caching, performance optimization, reusable module architecture, responsive Drupal themes.
+Frontend expertise: HTML, CSS, JavaScript, ReactJS, TypeScript, Tailwind CSS, responsive UI, modern product interfaces.
+AI and automation skills: Generative AI, n8n, workflow automation, AI product thinking, data analysis with AI, data visualisation, prompt engineering, AI storytelling.
+Data tools: Excel and Power BI.
+Professional experience: Senior Software Developer (Drupal), Infanion Software Solutions, 2012–2019. Built and maintained enterprise Drupal applications, custom modules, responsive themes, Views/Taxonomy content structures, REST integrations, and performance improvements.
+Achievements: delivered multiple high-performance Drupal projects, reduced page load time significantly, built reusable modules improving efficiency, and mentored junior developers.
+Education: Bachelor of Engineering in Computer Science.
+Contact: Bangalore, India. Email: nandini.hv8@gmail.com. GitHub: nandini-prashanth. LinkedIn: nandini-gowda-9193b741.
 Case studies:
 1. Pelgrom — historic Antwerp restaurant/pub website focused on Belgian food, beer culture, heritage, and hospitality storytelling. Drupal, PHP, MySQL, jQuery, Ajax, HTML5, JavaScript, CSS3.
 2. Peter De Roover — public profile platform for a Belgian politician; clear biography, updates, public communication, readability, and structured publishing. Drupal, PHP, MySQL, jQuery, Ajax, HTML5, JavaScript, CSS3.
