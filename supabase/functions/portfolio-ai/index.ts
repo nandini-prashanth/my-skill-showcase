@@ -38,7 +38,6 @@ const sanitizeMessages = (messages: unknown): ChatMessage[] => {
       ((message as ChatMessage).role === "user" || (message as ChatMessage).role === "assistant") &&
       typeof (message as ChatMessage).content === "string"
     )
-    .slice(-8)
     .map((message) => ({ role: message.role, content: message.content.slice(0, 1200) }));
 };
 
