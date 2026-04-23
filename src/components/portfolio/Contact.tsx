@@ -92,7 +92,7 @@ export function Contact() {
                     id="name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg bg-secondary border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-lg bg-secondary/55 border border-border/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
                     placeholder="Your name"
                     required
                   />
@@ -106,7 +106,7 @@ export function Contact() {
                     id="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg bg-secondary border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-lg bg-secondary/55 border border-border/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
                     placeholder="your@email.com"
                     required
                   />
@@ -120,7 +120,7 @@ export function Contact() {
                     rows={5}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg bg-secondary border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none"
+                    className="w-full px-4 py-3 rounded-lg bg-secondary/55 border border-border/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none"
                     placeholder="Tell me about your project..."
                     required
                   />
