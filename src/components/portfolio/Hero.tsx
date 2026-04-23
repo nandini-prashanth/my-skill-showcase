@@ -16,7 +16,7 @@ export function Hero() {
         <img src={heroBg} alt="Abstract developer workspace background" className="w-full h-full object-cover opacity-35" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/55 to-background" />
         <motion.div
-          className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,hsl(var(--primary)/0.18),transparent_32%),radial-gradient(circle_at_85%_20%,hsl(var(--accent)/0.14),transparent_28%)]"
+          className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,hsl(var(--primary)/0.18),transparent_32%),radial-gradient(circle_at_85%_20%,hsl(var(--primary)/0.10),transparent_28%)]"
           animate={{ backgroundPosition: ["0% 0%", "100% 40%", "0% 0%"] }}
           transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -111,7 +111,7 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.22 }}
             className="relative hidden lg:block"
           >
-            <div className="glass rounded-2xl p-7 shadow-2xl relative overflow-hidden">
+            <div className="glass rounded-2xl p-7 relative overflow-hidden transition-transform duration-500 hover:-translate-y-2">
               <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/70 to-transparent" />
               <div className="flex items-center gap-2 mb-7">
                 <span className="w-3 h-3 rounded-full bg-primary/80" />
@@ -126,7 +126,7 @@ export function Hero() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.45 + index * 0.12 }}
                     whileHover={{ x: 8, scale: 1.02 }}
-                    className="rounded-lg bg-secondary/70 border border-border p-5 transition-shadow duration-300 hover:shadow-xl hover:shadow-primary/10"
+                    className="rounded-lg bg-secondary/55 border border-border/10 p-5 transition-all duration-500 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10"
                   >
                     <p className="text-sm text-primary font-medium mb-2">SYSTEM / 0{index + 1}</p>
                     <p className="font-display text-2xl font-semibold">{point}</p>
