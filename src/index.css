@@ -8,40 +8,40 @@
 
 @layer base {
   :root {
-    --background: 222 36% 5%;
+    --background: 222 40% 7%;
     --foreground: 210 40% 98%;
 
-    --card: 224 30% 9%;
+    --card: 222 34% 10%;
     --card-foreground: 210 40% 98%;
 
     --popover: 224 30% 9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 206 100% 62%;
+    --primary: 188 100% 56%;
     --primary-foreground: 222 36% 5%;
 
-    --secondary: 225 28% 13%;
+    --secondary: 222 30% 13%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 224 22% 17%;
-    --muted-foreground: 218 20% 66%;
+    --muted: 222 24% 16%;
+    --muted-foreground: 215 18% 70%;
 
-    --accent: 152 84% 55%;
+    --accent: 188 100% 56%;
     --accent-foreground: 222 36% 5%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 224 24% 20%;
-    --input: 224 24% 20%;
-    --ring: 206 100% 62%;
+    --border: 210 40% 98%;
+    --input: 210 40% 98%;
+    --ring: 188 100% 56%;
 
     --radius: 0.65rem;
 
     /* Custom tokens */
-    --glow: 206 100% 62%;
-    --gradient-start: 206 100% 62%;
-    --gradient-end: 267 92% 68%;
+    --glow: 188 100% 56%;
+    --gradient-start: 188 100% 56%;
+    --gradient-end: 188 100% 56%;
     
     --font-display: 'Space Grotesk', sans-serif;
     --font-body: 'Inter', sans-serif;
@@ -84,10 +84,10 @@
     font-family: var(--font-body);
     background-color: hsl(var(--background));
     background-image:
-      radial-gradient(ellipse 80% 60% at 15% 0%, hsl(206 100% 62% / 0.13), transparent 60%),
-      radial-gradient(ellipse 70% 50% at 85% 10%, hsl(267 92% 68% / 0.16), transparent 60%),
-      radial-gradient(ellipse 88% 58% at 50% 100%, hsl(152 84% 55% / 0.10), transparent 70%),
-      linear-gradient(180deg, hsl(222 44% 4%) 0%, hsl(224 38% 6%) 48%, hsl(222 44% 4%) 100%);
+      radial-gradient(ellipse 72% 58% at 18% 0%, hsl(var(--primary) / 0.16), transparent 62%),
+      radial-gradient(ellipse 62% 48% at 86% 8%, hsl(var(--primary) / 0.10), transparent 58%),
+      radial-gradient(ellipse 86% 56% at 50% 100%, hsl(var(--primary) / 0.07), transparent 72%),
+      linear-gradient(180deg, hsl(var(--background)) 0%, hsl(224 38% 5%) 52%, hsl(var(--background)) 100%);
     background-attachment: fixed;
     position: relative;
   }
@@ -99,8 +99,8 @@
     pointer-events: none;
     z-index: 0;
     background-image:
-      linear-gradient(hsl(190 95% 50% / 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(190 95% 50% / 0.05) 1px, transparent 1px);
+      linear-gradient(hsl(var(--primary) / 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--primary) / 0.045) 1px, transparent 1px);
     background-size: 56px 56px;
     mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black, transparent 80%);
     -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black, transparent 80%);
@@ -132,7 +132,7 @@
   }
 
   .glow {
-    box-shadow: 0 0 30px -5px hsl(var(--glow) / 0.3);
+    box-shadow: 0 0 34px -8px hsl(var(--glow) / 0.42);
   }
 
   .glow-text {
@@ -140,18 +140,18 @@
   }
 
   .glass {
-    @apply bg-card/40 backdrop-blur-xl border border-border/50;
+    @apply bg-card/35 backdrop-blur-xl border border-border/10 shadow-2xl shadow-background/35;
   }
 
   .glass-hover {
-    @apply transition-all duration-300 hover:bg-card/60 hover:border-primary/30 hover:glow;
+    @apply transition-all duration-500 hover:bg-card/55 hover:border-primary/35 hover:glow;
   }
 
   .animated-gradient-bg {
     background:
       radial-gradient(ellipse 45% 35% at 18% 25%, hsl(var(--primary) / 0.18), transparent 65%),
-      radial-gradient(ellipse 38% 30% at 82% 18%, hsl(var(--gradient-end) / 0.14), transparent 62%),
-      radial-gradient(ellipse 55% 40% at 50% 88%, hsl(var(--accent) / 0.11), transparent 68%);
+      radial-gradient(ellipse 38% 30% at 82% 18%, hsl(var(--primary) / 0.10), transparent 62%),
+      radial-gradient(ellipse 55% 40% at 50% 88%, hsl(var(--primary) / 0.08), transparent 68%);
     background-size: 140% 140%, 160% 160%, 130% 130%;
     animation: gradient-drift 18s ease-in-out infinite alternate;
   }
@@ -163,7 +163,7 @@
   }
 
   .hover-depth {
-    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/10;
+    @apply transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/15;
   }
 
   .bg-noise {

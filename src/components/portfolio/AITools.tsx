@@ -127,10 +127,10 @@ export function AITools() {
               </div>
             </div>
 
-            <div className="flex-1 rounded-lg bg-secondary/60 border border-border p-4 overflow-y-auto space-y-4 mb-5 max-h-[26rem]">
+            <div className="flex-1 rounded-lg bg-secondary/45 border border-border/10 p-4 overflow-y-auto space-y-4 mb-5 max-h-[26rem]">
               {chatMessages.map((message, index) => (
                 <div key={`${message.role}-${index}`} className={message.role === "user" ? "flex justify-end" : "flex justify-start"}>
-                    <div className={`max-w-[88%] rounded-lg p-4 ${message.role === "user" ? "bg-primary text-primary-foreground" : "bg-card border border-border"}`}>
+                    <div className={`max-w-[88%] rounded-lg p-4 ${message.role === "user" ? "bg-primary text-primary-foreground" : "bg-card/65 border border-border/10"}`}>
                       <div className="prose prose-sm prose-invert max-w-none prose-p:my-0 prose-ul:my-2 prose-li:my-0">
                         <ReactMarkdown>{message.content}</ReactMarkdown>
                       </div>
@@ -146,7 +146,7 @@ export function AITools() {
               <input
                 value={chatInput}
                 onChange={(event) => setChatInput(event.target.value)}
-                className="flex-1 px-4 py-3 rounded-lg bg-secondary border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                className="flex-1 px-4 py-3 rounded-lg bg-secondary/55 border border-border/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
                 placeholder="Ask about a project, skill, or collaboration fit..."
               />
               <motion.button
@@ -177,7 +177,7 @@ export function AITools() {
                 value={resumeInput}
                 onChange={(event) => setResumeInput(event.target.value)}
                 rows={5}
-                className="w-full px-4 py-3 rounded-lg bg-secondary border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none mb-4"
+                className="w-full px-4 py-3 rounded-lg bg-secondary/55 border border-border/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none mb-4"
                 placeholder="Paste resume text here..."
               />
               <button onClick={handleResume} disabled={loadingMode !== null} className="w-full py-3 rounded-lg bg-primary text-primary-foreground font-semibold disabled:opacity-60 flex items-center justify-center gap-2">
@@ -205,7 +205,7 @@ export function AITools() {
                 value={projectNeed}
                 onChange={(event) => setProjectNeed(event.target.value)}
                 rows={4}
-                className="w-full px-4 py-3 rounded-lg bg-secondary border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none mb-4"
+                className="w-full px-4 py-3 rounded-lg bg-secondary/55 border border-border/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none mb-4"
                 placeholder="Describe your project goal or industry..."
               />
               <button onClick={handleRecommendation} disabled={loadingMode !== null} className="w-full py-3 rounded-lg bg-primary text-primary-foreground font-semibold disabled:opacity-60 flex items-center justify-center gap-2">

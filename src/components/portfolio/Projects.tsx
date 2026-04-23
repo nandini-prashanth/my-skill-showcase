@@ -105,7 +105,7 @@ export function Projects() {
                     ["Approach", project.approach],
                     ["Outcome", project.outcome],
                   ].map(([label, copy]) => (
-                    <motion.div key={label} whileHover={{ y: -5 }} className="rounded-lg bg-secondary/60 border border-border p-5 transition-colors duration-300 hover:border-primary/30">
+                    <motion.div key={label} whileHover={{ y: -5 }} className="rounded-lg bg-secondary/45 border border-border/10 p-5 transition-all duration-500 hover:border-primary/30 hover:bg-secondary/65 hover:shadow-lg hover:shadow-primary/10">
                       <div className="flex items-center gap-2 text-primary text-sm font-semibold mb-3">
                         {(() => {
                           const Icon = systemSignals[["Challenge", "Approach", "Outcome"].indexOf(label as string)] ?? Layers;

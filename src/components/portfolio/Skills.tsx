@@ -69,7 +69,7 @@ export function Skills() {
                     animate={isInView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ duration: 0.3, delay: categoryIndex * 0.08 + skillIndex * 0.04 }}
                     whileHover={{ scale: 1.08, y: -2 }}
-                    className="px-3 py-2 rounded-full bg-secondary text-secondary-foreground text-sm font-medium border border-border hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 cursor-default"
+                    className="px-3 py-2 rounded-full bg-secondary/55 text-secondary-foreground text-sm font-medium border border-border/10 hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 cursor-default"
                   >
                     {skill}
                   </motion.span>
