@@ -14,6 +14,14 @@ export function Header() {
   const [activeSection, setActiveSection] = useState<string>("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const handleNavClick = (event: React.MouseEvent<HTMLAnchorElement>, item: typeof navItems[number]) => {
+    event.preventDefault();
+    document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    window.history.pushState(null, "", item.href);
+    setActiveSection(item.id);
+    setIsMenuOpen(false);
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const sections = navItems.map((item) => ({
@@ -59,6 +67,7 @@ export function Header() {
               >
                 <a
                   href={item.href}
+                  onClick={(event) => handleNavClick(event, item)}
                   className={`transition-colors duration-300 font-medium ${
                     activeSection === item.id
                       ? "text-primary"
@@ -94,7 +103,7 @@ export function Header() {
                   <li key={item.name}>
                     <a
                       href={item.href}
-                      onClick={() => setIsMenuOpen(false)}
+                      onClick={(event) => handleNavClick(event, item)}
                       className={`block rounded-lg px-4 py-3 font-medium transition-all duration-300 ${
                         activeSection === item.id
                           ? "bg-primary/10 text-primary"
