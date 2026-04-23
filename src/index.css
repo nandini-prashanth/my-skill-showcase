@@ -132,7 +132,7 @@
   }
 
   .glow {
-    box-shadow: 0 0 30px -5px hsl(var(--glow) / 0.3);
+    box-shadow: 0 0 34px -8px hsl(var(--glow) / 0.42);
   }
 
   .glow-text {
@@ -140,18 +140,18 @@
   }
 
   .glass {
-    @apply bg-card/40 backdrop-blur-xl border border-border/50;
+    @apply bg-card/35 backdrop-blur-xl border border-border/10 shadow-2xl shadow-background/35;
   }
 
   .glass-hover {
-    @apply transition-all duration-300 hover:bg-card/60 hover:border-primary/30 hover:glow;
+    @apply transition-all duration-500 hover:bg-card/55 hover:border-primary/35 hover:glow;
   }
 
   .animated-gradient-bg {
     background:
       radial-gradient(ellipse 45% 35% at 18% 25%, hsl(var(--primary) / 0.18), transparent 65%),
-      radial-gradient(ellipse 38% 30% at 82% 18%, hsl(var(--gradient-end) / 0.14), transparent 62%),
-      radial-gradient(ellipse 55% 40% at 50% 88%, hsl(var(--accent) / 0.11), transparent 68%);
+      radial-gradient(ellipse 38% 30% at 82% 18%, hsl(var(--primary) / 0.10), transparent 62%),
+      radial-gradient(ellipse 55% 40% at 50% 88%, hsl(var(--primary) / 0.08), transparent 68%);
     background-size: 140% 140%, 160% 160%, 130% 130%;
     animation: gradient-drift 18s ease-in-out infinite alternate;
   }
@@ -163,7 +163,7 @@
   }
 
   .hover-depth {
-    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/10;
+    @apply transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/15;
   }
 
   .bg-noise {
