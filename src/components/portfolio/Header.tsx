@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
 
 const navItems = [
   { name: "Systems", href: "#projects", id: "projects" },
@@ -11,6 +12,7 @@ const navItems = [
 
 export function Header() {
   const [activeSection, setActiveSection] = useState<string>("");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -68,6 +70,44 @@ export function Header() {
               </motion.li>
             ))}
           </ul>
+
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen((open) => !open)}
+            className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border/30 bg-secondary/40 text-foreground transition-all duration-300 hover:border-primary/50 hover:text-primary"
+            aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={isMenuOpen}
+          >
+            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2 }}
+              className="absolute left-6 right-6 top-full mt-2 md:hidden rounded-xl border border-border/20 bg-background/95 p-3 shadow-glow backdrop-blur-xl"
+            >
+              <ul className="flex flex-col gap-1">
+                {navItems.map((item) => (
+                  <li key={item.name}>
+                    <a
+                      href={item.href}
+                      onClick={() => setIsMenuOpen(false)}
+                      className={`block rounded-lg px-4 py-3 font-medium transition-all duration-300 ${
+                        activeSection === item.id
+                          ? "bg-primary/10 text-primary"
+                          : "text-muted-foreground hover:bg-secondary/50 hover:text-primary"
+                      }`}
+                    >
+                      {item.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          )}
 
         </nav>
       </div>
